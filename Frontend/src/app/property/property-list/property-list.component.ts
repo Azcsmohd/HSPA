@@ -17,7 +17,6 @@ export class PropertyListComponent implements OnInit {
     this.housingService.getAllProperties().subscribe(
       data => {
         this.properties = data;
-
       }
     );
   }
