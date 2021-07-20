@@ -16,6 +16,7 @@ import { UserRegisterComponent } from './user/user-register/user-register.compon
 import { UserServiceService } from './services/user-service.service';
 import { AlertifyService } from './services/alertify.service';
 import {TabsModule} from 'ngx-bootstrap/tabs';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
 
 const appRoutes: Routes = [
   { path: '', component: PropertyListComponent },
@@ -46,7 +47,9 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    ButtonsModule.forRoot()
+
 
   ],
   providers: [
