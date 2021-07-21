@@ -7,16 +7,32 @@
             <div>
                 <tabset #formTabs>
                   <tab heading="Basic Info">
+
                     <div class="form-group col-12">
                       <p>I want to</p>
                       <div class="btn-group" btnRadioGroup>
                           <label class="btn-outline-primary me-2"
-                          btnRadio=1 role="button" name="SellRent">Sell</label>
+                          btnRadio='1' role="button" name="SellRent">Sell</label>
 
                           <label class="btn-outline-primary"
-                          btnRadio=2 role="button" name="SellRent">Rent</label>
+                          btnRadio='2' role="button" name="SellRent">Rent</label>
                       </div>
                       </div>
+                    
+
+
+                      <div class="form-group col-12"> 
+                        <p>BHK</p>
+                        <div class="btn-group" btnRadioGroup>
+                          <label *ngFor="let bhk of ['1','2','3','4']"
+                          class="btn btn-outline-primary me-2"
+                          [btnRadio]="bhk" tabindex="0" role="button" name="SellRent">{{bhk}}</label>
+                        </div>
+                      </div>
+
+
+
+
                       <div class="form-group col-12">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" #propName="ngModel" ngModel name="Name" required minlength="5">
