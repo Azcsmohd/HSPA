@@ -10,7 +10,7 @@
                     <div class="form-group col-12">
                       <p>I want to</p>
                       <div class="btn-group" btnRadioGroup>
-                          <label class="btn-outline-primary m-2"
+                          <label class="btn-outline-primary me-2"
                           btnRadio=1 role="button" name="SellRent">Sell</label>
 
                           <label class="btn-outline-primary"
@@ -33,9 +33,9 @@
                         <label for="price">Price</label>
                         <input type="text" class="form-control" ngModel name="Price">
                     </div>
-                    
-                      <button type="button" class="btn btn-primary btn-block mt-2" (click)="selectTab(1)">Next</button>
-            
+                      <div class="d-grid gap-2">
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(1)">Next</button>
+                    </div>
                   </tab>
 
                   <tab heading="Pricing and Area">
@@ -63,8 +63,10 @@
                         <label>Carpet Area(in Sqr Feet)</label>
                         <input type="text" class="form-control">
                       </div>
-                      <button type="button" class="btn btn-primary btn-block mt-2" (click)="selectTab(2)">Next</button>
-                      <button type="button" class="btn btn-primary btn-block m-2" (click)="selectTab(0)">Back</button>
+                      <div class="d-grid gap-2">
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(2)">Next</button>
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(0)">Back</button>
+                      </div>
                   </tab>
 
                   <tab heading="Address">
@@ -87,8 +89,10 @@
                         <label>Landmark</label>
                         <input type="text" class="form-control">
                       </div>
-                      <button type="button" class="btn btn-primary btn-block mt-2" (click)="selectTab(3)">Next</button>
-                      <button type="button" class="btn btn-primary btn-block m-2" (click)="selectTab(1)">Back</button>
+                      <div class="d-grid gap-2">
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(3)">Next</button>
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(1)">Back</button>
+                      </div>
                     </tab>
 
                   <tab heading="Other Details">
@@ -126,8 +130,10 @@
                         <textarea type="text" class="form-control" rows="6"></textarea>
                       </div>
 
-                      <button type="button" class="btn btn-primary btn-block mt-2" (click)="selectTab(4)">Next</button>
-                      <button type="button" class="btn btn-primary btn-block m-2" (click)="selectTab(2)">Back</button>
+                      <div class="d-grid gap-2">
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(4)">Next</button>
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(2)">Back</button>
+                      </div>
                     </tab>
 
                   <tab heading="Photoes">
@@ -137,9 +143,12 @@
                             This is under construction
                         </div>
                       </div>
-                      <button type="button" class="btn btn-primary btn-block mt-2" (click)="selectTab(3)">Next</button>
-                      <button type="button" type="reset" class="btn btn-primary btn-block m-2" >Cancel</button>
-                      <button type="button" type="submit" class="btn btn-primary btn-block m-2" >Save</button>
+
+                      <div class="d-grid gap-2">
+                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(3)">Next</button>
+                      <button type="button" type="reset" class="btn btn-primary mt-2" >Cancel</button>
+                      <button type="button" type="submit" class="btn btn-primary mt-2" >Save</button>
+                      </div>
                     </tab>
 
                 </tabset>
