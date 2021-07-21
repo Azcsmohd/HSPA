@@ -12,6 +12,10 @@ export class AddPropertyComponent implements OnInit {
   @ViewChild('Form') addPropertyForm: NgForm;
   @ViewChild('formTabs') formTabs: TabsetComponent;
 
+  propertyType: Array<string>=['House', 'Apartment', 'Duplex']
+  furnishType: Array<string>=['Fully', 'Semi', 'Unfurnished']
+  regionType: Array<string>=['East', 'West', 'South','North']
+
   constructor(private route: Router) { }
 
   ngOnInit(): void {
