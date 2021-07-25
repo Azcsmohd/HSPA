@@ -24,8 +24,5 @@ export class PropertyDetailComponent implements OnInit {
         this.propertyId=+params['id'];
       }
     );
-
-
   }
-
 }

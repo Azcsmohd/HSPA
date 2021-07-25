@@ -18,6 +18,8 @@ import { AlertifyService } from './services/alertify.service';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
 const appRoutes: Routes = [
   { path: '', component: PropertyListComponent },
@@ -50,8 +52,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     TabsModule.forRoot(),
     ButtonsModule.forRoot(),
-    BsDatepickerModule.forRoot()
-
+    BsDatepickerModule.forRoot(),
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot()
 
   ],
   providers: [
