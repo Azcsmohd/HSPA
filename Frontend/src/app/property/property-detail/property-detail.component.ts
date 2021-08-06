@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IProperty } from '../IProperty.interface';
-
 @Component({
   selector: 'app-property-detail',
   templateUrl: './property-detail.component.html',

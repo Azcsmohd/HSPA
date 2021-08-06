@@ -1,216 +1,206 @@
 <div class="row mb-5">
   <div class="col-8">
-<div class="card">
-    <div class="card-header">
-        <h3>List your  Property</h3>
-    </div>
-    <div class="card-body">
-        <form (ngSubmit)='onSubmit()' #Form="ngForm">
-            <div>
-                <tabset #formTabs>
-                  <tab heading="Basic Info">
+    <div class="card">
+      <div class="card-header">
+        <h3>List your Property</h3>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)='onSubmit()' [formGroup]="addPropertyForm">
+          <div class="tab-panel">
+            <tabset class="member-tabset" #formTabs>
+              <tab heading="Basic Info" ngModelGroup="BasicInfo" #BasicInfo="ngModelGroup">
 
-                    <div class="form-group col-12">
-                      <p>I want to</p>
-                      <div class="btn-group" btnRadioGroup>
-                          <label class=" btn btn-outline-primary me-2"
-                          btnRadio='1' role="button" name="SellRent">Sell</label>
+                <div class="form-group col-12">
+                  <p>I want to</p>
+                  <div class="btn-group" btnRadioGroup formControlName="SellRent" required>
+                    <label class=" btn btn-outline-primary me-2" btnRadio='1' tabindex="0" role="button" name="SellRent">Sell</label>
 
-                          <label class=" btn btn-outline-primary"
-                          btnRadio='2' role="button" name="SellRent">Rent</label>
-                      </div>
-                      </div>
-                    
+                    <label class=" btn btn-outline-primary" btnRadio='2' role="button" name="SellRent">Rent</label>
+                  </div>
+                </div>
+                <div class="form-group col-12">
+                  <p>BHK</p>
+                  <div class="btn-group" btnRadioGroup
+                    [(ngModel)]="propertyView.BHK" name="BHK" [ngModelOptions]="{standalone: true}">
+                    <label *ngFor="let bhk of ['1','2','3','4']" class="btn btn-outline-primary me-2" [btnRadio]="bhk"
+                      tabindex="0" role="button" name="BHK">{{bhk}}</label>
+                  </div>
+                </div>
 
-
-                      <div class="form-group col-12"> 
-                        <p>BHK</p>
-                        <div class="btn-group" btnRadioGroup>
-                          <label *ngFor="let bhk of ['1','2','3','4']"
-                          class="btn btn-outline-primary me-2"
-                          [btnRadio]="bhk" tabindex="0" role="button" name="BHK">{{bhk}}</label>
-                        </div>
-                      </div>
-
-                      <div class="form-group col-12"> 
-                        <p>Property Type</p>
-                        <div class="btn-group" btnRadioGroup name='propType' name='propType' [(ngModel)]="propertyView.PType">
-                          <label *ngFor="let ptype of propertyType"
-                          class="btn btn-outline-primary me-2"
-                          [btnRadio]="ptype" tabindex="0" role="button" name="Ptype">{{ptype}}</label>
-                        </div>
-                      </div>
+                <div class="form-group col-12">
+                  <p>Property Type</p>
+                  <div class="btn-group" btnRadioGroup formControlName='PType' [(ngModel)]="propertyView.PType">
+                    <label *ngFor="let ptype of propertyType" class="btn btn-outline-primary me-2" [btnRadio]="ptype"
+                      tabindex="0" role="button" name="Ptype">{{ptype}}</label>
+                  </div>
+                </div>
 
 
-                      <div class="form-group col-12"> 
-                        <p>Furnishing Type</p>
-                        <div class="btn-group" btnRadioGroup>
-                          <label *ngFor="let ftype of furnishType"
-                          class="btn btn-outline-primary me-2"
-                          [btnRadio]="ftype" tabindex="0" role="button" name="ftype">{{ftype}}</label>
-                        </div>
-                      </div>
+                <div class="form-group col-12">
+                  <p>Furnishing Type</p>
+                  <div class="btn-group" btnRadioGroup
+                    [(ngModel)]="propertyView.FType" name="FType" [ngModelOptions]="{standalone: true}">
+                    <label *ngFor="let ftype of furnishType" class="btn btn-outline-primary me-2" [btnRadio]="ftype"
+                      tabindex="0" role="button" name="ftype">{{ftype}}</label>
+                  </div>
+                </div>
 
 
-                      <div class="form-group col-12">
-                        <label>in Building/Society/Project</label>
-                        <input type="text" class="form-control" #propName="ngModel" ngModel name="Name" required minlength="5" [(ngModel)]="propertyView.Name">
-                        <span *ngIf="!propName.valid && propName.touched" class="error-block">
-                            <span *ngIf="propName.errors?.required">Please provide Name</span>
-                            <span *ngIf="propName.errors?.minlength">Name should be 5 char long</span>
-                        </span>
-                      </div>
+                <div class="form-group col-12">
+                  <label>in Building/Society/Project</label>
+                  <input type="text" class="form-control" #propName="ngModel" ngModel name="Name" required minlength="5"
+                    [(ngModel)]="propertyView.Name">
+                  <span *ngIf="!propName.valid && propName.touched" class="error-block">
+                    <span *ngIf="propName.errors?.required">Please provide Name</span>
+                    <span *ngIf="propName.errors?.minlength">Name should be 5 char long</span>
+                  </span>
+                </div>
 
-                    <div class="form-group col-12">
-                        <label>City</label>
-                        <input type="text" class="form-control">
-                    </div>
-                      <div class="d-grid gap-2">
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(1)">Next</button>
-                    </div>
-                  </tab>
+                <div class="form-group col-12">
+                  <label>City</label>
+                  <input type="text" class="form-control"
+                  [(ngModel)]="propertyView.City" name="City" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(1)"[>Next</button>
+                </div>
+              </tab>
 
-                  <tab heading="Pricing and Area">
-                    <div class="form-group col-12">
-                        <label>Price (in USD)</label>
-                        <input type="text" class="form-control" name="price" [(ngModel)]="propertyView.Price">
-                      </div>
-        
-                      <div class="form-group col-12">
-                        <label>Security (in USD)</label>
-                        <input type="text" class="form-control">
-                      </div>
-        
-                      <div class="form-group col-12">
-                        <label>Maintenance (in USD)</label>
-                        <input type="text" class="form-control">
-                      </div>
-        
-                      <div class="form-group col-12">
-                        <label>Built Area (in Sqr Feet)</label>
-                        <input type="text" class="form-control">
-                      </div>
-        
-                      <div class="form-group col-12">
-                        <label>Carpet Area(in Sqr Feet)</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="d-grid gap-2">
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(2)">Next</button>
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(0)">Back</button>
-                      </div>
-                  </tab>
+              <tab heading="Pricing and Area">
+                <div class="form-group col-12">
+                  <label>Price (in USD)</label>
+                  <input type="text" class="form-control" name="price" [(ngModel)]="propertyView.Price">
+                </div>
 
-                  <tab heading="Address">
-                    <div class="form-group col-12">
-                        <label>Floor</label>
-                        <input type="text" class="form-control">
-                      </div>
-          
-                      <div class="form-group col-12">
-                        <label>Total Floor</label>
-                        <input type="text" class="form-control">
-                      </div>
-          
-                      <div class="form-group col-12">
-                        <label>Address</label>
-                        <input type="text" class="form-control">
-                      </div>
-          
-                      <div class="form-group col-12">
-                        <label>Landmark</label>
-                        <input type="text" class="form-control">
-                      </div>
-                      <div class="d-grid gap-2">
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(3)">Next</button>
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(1)">Back</button>
-                      </div>
-                    </tab>
+                <div class="form-group col-12">
+                  <label>Security (in USD)</label>
+                  <input type="text" class="form-control">
+                </div>
 
-                  <tab heading="Other Details">
-                    <div class="form-group col-12">
-                      <p>Ready to move</p>
-                      <div class="btn-group" btnRadioGroup>
-                          <label class="btn btn-outline-primary me-2"
-                          btnRadio='1' role="button" name="RTM">Yes</label>
+                <div class="form-group col-12">
+                  <label>Maintenance (in USD)</label>
+                  <input type="text" class="form-control">
+                </div>
 
-                          <label class=" btn btn-outline-primary"
-                          btnRadio='2' role="button" name="RTM">No</label>
-                      </div>
-                      </div>
-          
-                      <div class="form-group col-3">
-                        <label>Possession/Avaialble From</label>                     
-                        <input type="text"
-                        placeholder="Datepicker"
-                        class="form-control"
-                        bsDatepicker [bsConfig]="{containerClass: 'theme-dark-blue',dateInputFormat:'DD-MM-YYYY'}">
-                      </div>
-          
-                      <div class="form-group col-12">
-                        <label>Age of Property</label>
-                        <input type="text" class="form-control">
-                      </div>
-          
-                      <div class="form-group col-12">
-                        <p>Gated Community</p>
-                        <div class="btn-group" btnRadioGroup>
-                            <label class="btn btn-outline-primary me-2"
-                            btnRadio='1' role="button" name="GTC">Yes</label>
-  
-                            <label class=" btn btn-outline-primary"
-                            btnRadio='2' role="button" name="GTC">No</label>
-                        </div>
-                        </div>
-          
-                        <div class="form-group col-12"> 
-                          <p>Region</p>
-                          <div class="btn-group" btnRadioGroup>
-                            <label *ngFor="let rtype of regionType"
-                            class="btn btn-outline-primary me-2"
-                            [btnRadio]="rtype" tabindex="0" role="button" name="rtype">{{rtype}}</label>
-                          </div>
-                        </div>
-          
-                      <div class="form-group col-12">
-                        <label>Description</label>
-                        <textarea type="text" class="form-control" rows="6"></textarea>
-                      </div>
+                <div class="form-group col-12">
+                  <label>Built Area (in Sqr Feet)</label>
+                  <input type="text" class="form-control" [(ngModel)]="propertyView.BuiltArea" formControlName="BuiltArea">
+                </div>
 
-                      <div class="d-grid gap-2">
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(4)">Next</button>
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(2)">Back</button>
-                      </div>
-                    </tab>
+                <div class="form-group col-12">
+                  <label>Carpet Area(in Sqr Feet)</label>
+                  <input type="text" class="form-control"
+                  [(ngModel)]="propertyView.BuiltArea" name="BuiltArea">
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(2)">Next</button>
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(0)">Back</button>
+                </div>
+              </tab>
 
-                  <tab heading="Photoes">
-                    <div class="form-group col-12">
-                        <div class="photo-control">
-                            <button class="mt-5" type="button">Upload</button> <br>
-                            This is under construction
-                        </div>
-                      </div>
+              <tab heading="Address">
+                <div class="form-group col-12">
+                  <label>Floor</label>
+                  <input type="text" class="form-control">
+                </div>
 
-                      <div class="d-grid gap-2">
-                      <button type="button" class="btn btn-primary mt-2" (click)="selectTab(3)">Next</button>
-                      <button type="button" type="reset" class="btn btn-primary mt-2" >Cancel</button>
-                      <button type="button" type="submit" class="btn btn-primary mt-2" >Save</button>
-                      </div>
-                    </tab>
+                <div class="form-group col-12">
+                  <label>Total Floor</label>
+                  <input type="text" class="form-control">
+                </div>
 
-                </tabset>
-              </div>            
-            
+                <div class="form-group col-12">
+                  <label>Address</label>
+                  <input type="text" class="form-control">
+                </div>
+
+                <div class="form-group col-12">
+                  <label>Landmark</label>
+                  <input type="text" class="form-control">
+                </div>
+                <div class="d-grid gap-2">
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(3)">Next</button>
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(1)">Back</button>
+                </div>
+              </tab>
+
+              <tab heading="Other Details">
+                <div class="form-group col-12">
+                  <p>Ready to move</p>
+                  <div class="btn-group" btnRadioGroup>
+                    <label class="btn btn-outline-primary me-2" btnRadio='1' role="button" name="RTM">Yes</label>
+
+                    <label class=" btn btn-outline-primary" btnRadio='2' role="button" name="RTM">No</label>
+                  </div>
+                </div>
+
+                <div class="form-group col-3">
+                  <label>Possession/Avaialble From</label>
+                  <input type="text" placeholder="Datepicker" class="form-control" bsDatepicker
+                    [bsConfig]="{containerClass: 'theme-dark-blue',dateInputFormat:'DD-MM-YYYY'}">
+                </div>
+
+                <div class="form-group col-12">
+                  <label>Age of Property</label>
+                  <input type="text" class="form-control">
+                </div>
+
+                <div class="form-group col-12">
+                  <p>Gated Community</p>
+                  <div class="btn-group" btnRadioGroup>
+                    <label class="btn btn-outline-primary me-2" btnRadio='1' role="button" name="GTC">Yes</label>
+
+                    <label class=" btn btn-outline-primary" btnRadio='2' role="button" name="GTC">No</label>
+                  </div>
+                </div>
+
+                <div class="form-group col-12">
+                  <p>Region</p>
+                  <div class="btn-group" btnRadioGroup>
+                    <label *ngFor="let rtype of regionType" class="btn btn-outline-primary me-2" [btnRadio]="rtype"
+                      tabindex="0" role="button" name="rtype">{{rtype}}</label>
+                  </div>
+                </div>
+
+                <div class="form-group col-12">
+                  <label>Description</label>
+                  <textarea type="text" class="form-control" rows="6"></textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(4)">Next</button>
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(2)">Back</button>
+                </div>
+              </tab>
+
+              <tab heading="Photoes">
+                <div class="form-group col-12">
+                  <div class="photo-control">
+                    <button class="mt-5" type="button">Upload</button> <br>
+                    This is under construction
+                  </div>
+                </div>
+
+                <div class="d-grid gap-2">
+                  <button type="button" class="btn btn-primary mt-2" (click)="selectTab(3)">Next</button>
+                  <button type="button" type="reset" class="btn btn-primary mt-2">Cancel</button>
+                  <button type="button" type="submit" class="btn btn-primary mt-2">Save</button>
+                </div>
+              </tab>
+
+            </tabset>
+          </div>
+
         </form>
-    </div>
-</div>
-</div>
-<div class="col-4">
-  <div class="card-header">
-    <h3>Your Property Preview</h3>
-    <div>
-      <app-property-card [property]="propertyView"></app-property-card>
+      </div>
     </div>
   </div>
-</div>
+  <div class="col-4">
+    <div class="card-header">
+      <h3>Your Property Preview</h3>
+      <div>
+        <app-property-card [property]="propertyView" [hideIcons]="true"></app-property-card>
+      </div>
+    </div>
+  </div>
 </div>
