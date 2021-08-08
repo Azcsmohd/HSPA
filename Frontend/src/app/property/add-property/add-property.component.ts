@@ -42,12 +42,16 @@ export class AddPropertyComponent implements OnInit {
 
 CreateAddPropertyForm(){
   this.addPropertyForm=this.fb.group({
+    BasicInfo: this.fb.group({
     SellRent: [null,Validators.required],
     PType: [null,Validators.required],
-    Name: [null,Validators.required],
+    Name: [null,Validators.required]
+    }),
+    PriceInfo: this.fb.group({
     Price: [null,Validators.required],
     BuiltArea: [null,Validators.required]
-  })
+    })
+  });
 }
 
   onBack() {
@@ -56,7 +60,7 @@ CreateAddPropertyForm(){
   onSubmit() {
 
     console.log('Congrats form submitted')
-    console.log('SellRent='+this.addPropertyForm.value.SellRent);
+    console.log('SellRent='+this.addPropertyForm.value.BasicInfo.SellRent);
     console.log(this.addPropertyForm);
   }
   selectTab(tabId: number) {
