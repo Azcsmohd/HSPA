@@ -10,5 +10,7 @@ export interface IPropertyBase {
     City: string;
     RTM: number;
     Image?: string;
+    readyToMove: boolean;
+    estPossessionOn?: string;
 
 }
