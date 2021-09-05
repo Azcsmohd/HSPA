@@ -11,7 +11,6 @@ import { IPropertyBase } from 'src/app/model/ipropertybase';
   styleUrls: ['./add-property.component.scss']
 })
 export class AddPropertyComponent implements OnInit {
-  //@ViewChild('Form') addPropertyForm: NgForm;
   @ViewChild('formTabs') formTabs: TabsetComponent;
   addPropertyForm: FormGroup;
   NextClicked: boolean;
@@ -31,7 +30,6 @@ export class AddPropertyComponent implements OnInit {
     BHK: 0,
     BuiltArea: 0,
     City: '',
-    RTM: 0,
     readyToMove: false
   };
 
