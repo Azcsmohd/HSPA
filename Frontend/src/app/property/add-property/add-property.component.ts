@@ -3,6 +3,8 @@ import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angula
 import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { IPropertyBase } from 'src/app/model/ipropertybase';
+import { Property } from 'src/app/model/property';
+import { HousingService } from 'src/app/services/housing.service';
 
 
 @Component({
@@ -14,6 +16,9 @@ export class AddPropertyComponent implements OnInit {
   @ViewChild('formTabs') formTabs: TabsetComponent;
   addPropertyForm: FormGroup;
   NextClicked: boolean;
+  property = new Property();
+
+
 
 
   propertyType: Array<string> = ['House', 'Apartment', 'Duplex']
@@ -21,20 +26,21 @@ export class AddPropertyComponent implements OnInit {
   regionType: Array<string> = ['East', 'West', 'South', 'North']
 
   propertyView: IPropertyBase = {
-    Id: 0,
-    Name: '',
-    SellRent: 0,
-    Price: 0,
-    PType: '',
-    FType: '',
-    BHK: 0,
-    BuiltArea: 0,
-    City: '',
+    id: 0,
+    name: '',
+    sellRent: 0,
+    price: 0,
+    propertyType: '',
+    furnishingType: '',
+    bhk: 0,
+    builtArea: 0,
+    city: '',
     readyToMove: false
   };
+  housingService: any;
 
 
-  constructor(private fb: FormBuilder, private route: Router) { }
+  constructor(private fb: FormBuilder, private route: Router, housingService: HousingService) { }
 
   ngOnInit(): void {
     this.CreateAddPropertyForm();
@@ -187,6 +193,8 @@ get Description() {
   onSubmit() {
     this.NextClicked=true;
     if (this.allTabsValid()){
+      this.mapProperty();
+      this.housingService.addProperty(this.property);
     console.log('Congrats, your property form listed successfully on our site')
     console.log(this.addPropertyForm);
   } else {
@@ -194,6 +202,30 @@ get Description() {
   }
 }
 
+mapProperty(): void {
+  this.property.id = this.housingService.newPropID();
+  this.property.sellRent = +this.SellRent.value;
+  this.property.bhk = this.BHK.value;
+  this.property.propertyTypeId = this.PType.value;
+  this.property.name = this.Name.value;
+  this.property.CityId = this.City.value;
+  this.property.furnishingTypeId = this.FType.value;
+  this.property.price = this.Price.value;
+  this.property.security = this.Security.value;
+  this.property.maintenance = this.Maintenance.value;
+  this.property.builtArea = this.BuiltArea.value;
+  this.property.carpetArea = this.CarpetArea.value;
+  this.property.floorNo = this.FloorNo.value;
+  this.property.totalFloors = this.TotalFloor.value;
+  this.property.address = this.Address.value;
+  this.property.address2 = this.LandMark.value;
+  this.property.readyToMove = this.RTM.value;
+  this.property.gated = this.Gated.value;
+  this.property.mainEntrance = this.MainEntrance.value;
+  this.property.Possession=this.PossessionOn.value;
+  this.property.description = this.Description.value;
+  this.property.PostedOn = new Date().toString();
+}
 allTabsValid():boolean{
  
   if(this.BasicInfo.invalid) {

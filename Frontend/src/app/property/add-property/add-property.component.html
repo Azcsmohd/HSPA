@@ -28,7 +28,7 @@
                 <div class="form-group col-12">
                   <p>BHK</p>
                   <div class="btn-group" btnRadioGroup
-                    [(ngModel)]="propertyView.BHK"
+                    [(ngModel)]="propertyView.bhk"
                     formControlName="BHK">
                     <label *ngFor="let bhk of ['1','2','3','4']"
                     class="btn btn-outline-primary me-2"
@@ -47,7 +47,7 @@
                 <div class="form-group col-12">
                   <p>Property Type</p>
                   <div class="btn-group" btnRadioGroup formControlName='PType'
-                  [(ngModel)]="propertyView.PType">
+                  [(ngModel)]="propertyView.propertyType">
                     <label *ngFor="let ptype of propertyType"
                     class="btn btn-outline-primary me-2" [btnRadio]="ptype"
                       tabindex="0" role="button" name="Ptype">{{ptype}}</label>
@@ -62,7 +62,7 @@
                 <div class="form-group col-12">
                   <p>Furnishing Type</p>
                   <div class="btn-group" btnRadioGroup
-                    [(ngModel)]="propertyView.FType"
+                    [(ngModel)]="propertyView.furnishingType"
                     formControlName="FType">
                     <label *ngFor="let ftype of furnishType" class="btn btn-outline-primary me-2" [btnRadio]="ftype"
                       tabindex="0" role="button" name="ftype">{{ftype}}</label>
@@ -77,7 +77,7 @@
                   <label>in Building/Society/Project</label>
                   <input type="text" class="form-control"
                   formControlName="Name" required minlength="5"
-                    [(ngModel)]="propertyView.Name">
+                    [(ngModel)]="propertyView.name">
 
                     <div class="error-block"
                     *ngIf="Name.invalid && (NextClicked || Name.touched)">
@@ -88,7 +88,7 @@
                 <div class="form-group col-12">
                   <label>City</label>
                   <input type="text" class="form-control"
-                  [(ngModel)]="propertyView.City"
+                  [(ngModel)]="propertyView.city"
                   formControlName="City">
                   <div class="error-block"
                   *ngIf="City.invalid && (NextClicked || City.touched)">
@@ -108,7 +108,7 @@
 
                   <input type="text" class="form-control"
                   formControlName="Price"
-                  [(ngModel)]="propertyView.Price">
+                  [(ngModel)]="propertyView.price">
                  <div class="error-block"
                  *ngIf="Price.invalid && (NextClicked || Price.touched)">
                   Please select
@@ -138,7 +138,7 @@
                   <input type="text"
                   class="form-control"
                   formControlName="BuiltArea"
-                  [(ngModel)]="propertyView.BuiltArea" >
+                  [(ngModel)]="propertyView.builtArea" >
                   <div class="error-block"
                     *ngIf="BuiltArea.invalid && NextClicked">
                       Please select built up area
