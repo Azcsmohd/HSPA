@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { IPropertyBase } from 'src/app/model/ipropertybase';
 import { Property } from 'src/app/model/property';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { HousingService } from 'src/app/services/housing.service';
 
 
@@ -29,18 +30,15 @@ export class AddPropertyComponent implements OnInit {
     id: 0,
     name: '',
     sellRent: 0,
-    price: 0,
+    price: null,
     propertyType: '',
     furnishingType: '',
     bhk: 0,
-    builtArea: 0,
+    builtArea: null,
     city: '',
     readyToMove: false
   };
-  housingService: any;
-
-
-  constructor(private fb: FormBuilder, private route: Router, housingService: HousingService) { }
+  constructor(private fb: FormBuilder, private route: Router, private housingService: HousingService, private alertify: AlertifyService) { }
 
   ngOnInit(): void {
     this.CreateAddPropertyForm();
@@ -195,10 +193,15 @@ get Description() {
     if (this.allTabsValid()){
       this.mapProperty();
       this.housingService.addProperty(this.property);
-    console.log('Congrats, your property form listed successfully on our site')
+    this.alertify.success('Congrats, your property form listed successfully on our site');
     console.log(this.addPropertyForm);
+    if(this.SellRent.value==='2'){
+      this.route.navigate(['/rent-property'])
+    } else {
+      this.route.navigate(['/'])
+    }
   } else {
-    console.log('Please review the form and provide all valid entries')
+    this.alertify.error('Please review the form and provide all valid entries');
   }
 }
 

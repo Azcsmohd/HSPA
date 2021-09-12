@@ -11,7 +11,8 @@ import { HousingService } from 'src/app/services/housing.service';
 export class PropertyListComponent implements OnInit {
   SellRent = 1;
 
-  properties: Array<IPropertyBase>;
+  //properties: Array<IPropertyBase>;
+  properties: IPropertyBase[];
 
   constructor(private route: ActivatedRoute, private housingService: HousingService) { }
 
@@ -22,7 +23,15 @@ export class PropertyListComponent implements OnInit {
     this.housingService.getAllProperties(this.SellRent).subscribe(
       data => {
         this.properties = data;
+        const newPropetry = JSON.parse(localStorage.getItem('newProp'));
 
+        if (newPropetry.SellRent === this.SellRent) {
+          this.properties=[newPropetry, ...this.properties];
+        }
+
+        console.log(data);
+      }, error => {
+        console.log('httperror');
       }
     );
   }
