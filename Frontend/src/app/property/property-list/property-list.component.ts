@@ -20,15 +20,10 @@ export class PropertyListComponent implements OnInit {
     if (this.route.snapshot.url.toString()){
       this.SellRent=2;  //Means we are on rent-propert URL else we are on base URL
     }
-    this.housingService.getAllProperties(this.SellRent).subscribe(
+    this.housingService.getAllProperties().subscribe(
       data => {
         this.properties = data;
-        const newPropetry = JSON.parse(localStorage.getItem('newProp'));
-
-        if (newPropetry.SellRent === this.SellRent) {
-          this.properties=[newPropetry, ...this.properties];
-        }
-
+        
         console.log(data);
       }, error => {
         console.log('httperror');
